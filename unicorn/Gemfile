@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+ruby '2.5.0'
+
+gem 'colorize'
+gem 'json'
+gem 'minitest'
+gem 'rack-test'
+gem 'rspec'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'unicorn'
