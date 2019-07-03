@@ -5,7 +5,6 @@ RUBY_VER               = WebApiConf::UNICORN[:ruby_ver]
 APP_DIR                = WebApiConf::UNICORN[:working_dir]
 UNICORN_CONTAINER_NAME = WebApiConf::UNICORN[:container_name]
 UNICORN_HOST           = WebApiConf::UNICORN[:host]
-UNICORN_LOG_VOL        = WebApiConf::UNICORN[:log_vol]
 UNICORN_PORT           = WebApiConf::UNICORN[:port]
 UNICORN_TIMEOUT        = WebApiConf::UNICORN[:timeout]
 UNICORN_WORKERS        = WebApiConf::UNICORN[:workers]
@@ -27,7 +26,6 @@ namespace :docker_compose do
       echo UNICORN_HOST=#{UNICORN_HOST}
       echo UNICORN_TIMEOUT=#{UNICORN_TIMEOUT}
       echo UNICORN_WORKERS=#{UNICORN_WORKERS}
-      echo UNICORN_LOG_VOL=#{UNICORN_LOG_VOL}
       echo UNICORN_CONTAINER_NAME=#{UNICORN_CONTAINER_NAME}) > #{DOCKER_ENV_FILE}"
     )
   end
