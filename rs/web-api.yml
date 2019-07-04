@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: web-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: backend
+      service: web-api
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: web-api
+        language: ruby
+    spec:
+      containers:
+      - name: api
+        image: vsuzdaltsev/web_api:0.0.2
+        env:
+        - name: APP_DIR
+          value: '/opt/app'
+        - name: RUBY_VER
+          value: '2.5.0'
+        - name: UNICORN_PORT
+          value: '4567'
+        - name: UNICORN_HOST
+          value: '0.0.0.0'
+        - name: UNICORN_TIMEOUT
+          value: '5'
+        - name: UNICORN_WORKERS
+          value: '2'
+        - name: UNICORN_CONTAINER_NAME
+          value: 'unicorn'
+        livenessProbe:
+          httpGet:
+            path: /api/v1/get
+            port: 4567
+        command: ["/usr/local/bundle/bin/unicorn"]
+        args: ["-c", "/opt/app/unicorn.conf"]
