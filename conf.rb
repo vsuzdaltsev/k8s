@@ -29,7 +29,7 @@ module WebApiConf
   UNICORN = {
     working_dir:    '/opt/app',
     ruby_ver:       ruby_ver,
-    host:           '127.0.0.1',
+    host:           '0.0.0.0',
     port:           '4567',
     timeout:        '5',
     workers:        '2',
