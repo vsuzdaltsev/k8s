@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: web-api
-    image: vsuzdaltsev/web_api:0.0.1
+    image: vsuzdaltsev/web_api:0.0.2
     ports:
       - containerPort: 4567
     env:
@@ -19,7 +19,7 @@ spec:
     - name: UNICORN_PORT
       value: '4567'
     - name: UNICORN_HOST
-      value: '127.0.0.1'
+      value: '0.0.0.0'
     - name: UNICORN_TIMEOUT
       value: '5'
     - name: UNICORN_WORKERS
