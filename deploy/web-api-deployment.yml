@@ -12,7 +12,7 @@ spec:
       - path: /
         backend:
           serviceName: web-api
-          servicePort: 8080
+          servicePort: 80
 
 ---
 
@@ -42,7 +42,7 @@ spec:
         - name: RUBY_VER
           value: '2.5.0'
         - name: UNICORN_PORT
-          value: '8080'
+          value: '80'
         - name: UNICORN_HOST
           value: '0.0.0.0'
         - name: UNICORN_TIMEOUT
@@ -54,7 +54,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /api/v1/get
-            port: 8080
+            port: 80
         command: ["/usr/local/bundle/bin/unicorn"]
         args: ["-c", "/opt/app/unicorn.conf"]
 
@@ -67,7 +67,7 @@ metadata:
   name: web-api
 spec:
   ports:
-  - port: 8080
+  - port: 80
   selector:
     type: backend
     service: web-api
