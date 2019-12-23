@@ -51,13 +51,16 @@ spec:
           value: '2'
         - name: UNICORN_CONTAINER_NAME
           value: 'unicorn'
+        - name: CONTAINER_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
         livenessProbe:
           httpGet:
             path: /api/v1/get
             port: 80
         command: ["/usr/local/bundle/bin/unicorn"]
         args: ["-c", "/opt/app/unicorn.conf"]
-
 
 ---
 
