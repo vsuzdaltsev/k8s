@@ -29,7 +29,7 @@ class RestApi < Sinatra::Base
         send(m, '/*') do
           stream do |out|
             content_type :json
-            help = [] << { help: "#{m} method default route", executed_on: `hostname -f`.chomp }.to_json
+            help = [] << { help: "#{m} method default route", executed_on: `hostname -f`.chomp, kubernetes_namespace: ENV['CONTAINER_NAMESPACE'] }.to_json
             out.puts help.join("\n")
           end
         end
