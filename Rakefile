@@ -54,9 +54,9 @@ namespace :docker_compose do
   end
 end
 
-# namespace :test do
-#  desc 'rspec'
-#  task :rspec do |t|
-#    system('rspec .')
-#  end
-# end
+namespace :test do
+  desc 'rspec'
+  task :rspec do |_t|
+    system('docker exec -it unicorn rspec . -f d')
+  end
+end

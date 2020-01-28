@@ -16,5 +16,7 @@ services:
     command: unicorn -c ${APP_DIR}/unicorn.conf
     ports:
       - ${UNICORN_PORT}:${UNICORN_PORT}
+    volumes:
+      -  ./spec/:${APP_DIR}/spec
     container_name: ${UNICORN_CONTAINER_NAME}
     image: ${UNICORN_CONTAINER_NAME}_img
