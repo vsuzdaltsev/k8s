@@ -20,9 +20,9 @@ end
 
 describe 'create_default_route_methods' do
   context 'when curl different http types' do
-    it 'should successfully return default response from default route with http type' do
-      container = `hostname`.chomp
-      WebApiConf::DEFAULTS[:valid_http_methods].each do |method|
+    WebApiConf::DEFAULTS[:valid_http_methods].each do |method|
+      it "should successfully return default response from default route with http type #{method}" do
+        container = `hostname`.chomp
         send(method, "#{WebApiConf::DEFAULTS[:api_url_base_v1]}/*") do
           expect(last_response).to be_ok
           expect(last_response.body).to match "{\"help\":\"#{method} method default route\",\"executed_on\":\"#{container}\",\"kubernetes_namespace\":null}"

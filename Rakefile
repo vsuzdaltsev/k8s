@@ -57,6 +57,6 @@ end
 namespace :test do
   desc 'rspec'
   task :rspec do |_t|
-    system('docker exec -it unicorn rspec . -f d')
+    system('docker exec -it unicorn bundle exec rspec spec --format documentation')
   end
 end
